@@ -20,10 +20,10 @@
 * Definci�n del elemento de la lista
 */
 
-typedef struct ElementeListaTDA{
+typedef struct ElementoListaTDA{
 	void *objeto;
-	struct ElementeListaTDA *siguiente;
-	struct ElementeListaTDA *anterior;
+	struct ElementoListaTDA *siguiente;
+	struct ElementoListaTDA *anterior;
 } ElementoLista;
 
 /**

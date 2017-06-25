@@ -1,11 +1,11 @@
 INCLUDE=-Iinclude/
 LIBS=-Llib/
 
-prueba: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o lib/liblista.so
-	gcc $(LIBS) $^ -o bin/$@
+prueba: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o Lista_Buscar.o liblista.so 
+	gcc $(LIBS) obj/* -o bin/$@
 
-liblista.so: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o
-	gcc -shared  $^ -o lib/liblista.so
+liblista.so: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o Lista_Buscar.o
+	gcc -shared  obj/* -o lib/liblista.so
 
 pruebaLista.o: src/pruebaLista.c
 	gcc -fPIC -Wall -c $(INCLUDE) $^ -o obj/$@
