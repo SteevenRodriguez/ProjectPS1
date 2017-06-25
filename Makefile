@@ -1,10 +1,10 @@
 INCLUDE=-Iinclude/
 LIBS=-Llib/
 
-prueba: lib/*
+prueba: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o lib/liblista.so
 	gcc $(LIBS) $^ -o bin/$@
 
-liblista.so: obj/*
+liblista.so: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o
 	gcc -shared  $^ -o lib/liblista.so
 
 pruebaLista.o: src/pruebaLista.c

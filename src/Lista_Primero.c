@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "miLista.h"
 
 ElementoLista *Lista_Primero(ListaEnlazada *lista);
@@ -7,10 +9,10 @@ ElementoLista *Lista_Primero(ListaEnlazada *lista){
   {
   	int numeroElementos = Lista_Conteo(lista);
   	if (numeroElementos > 0)
-    {
-    //ElementoLista ultimo = (lista->ancla).anterior; 
-      return lista->ancla.siguiente;
-    }
+	    {
+	    //ElementoLista ultimo = (lista->ancla).anterior; 
+	      return lista->ancla.siguiente;
+	    }
   }
   return NULL;
 }

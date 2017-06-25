@@ -1,5 +1,6 @@
-#include "miLista.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include "miLista.h"
 
 void Lista_Sacar(ListaEnlazada *lista, ElementoLista *elemento);
 void Lista_Sacar(ListaEnlazada *lista, ElementoLista *elemento)
