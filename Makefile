@@ -2,7 +2,7 @@ INCLUDE=-Iinclude/
 LIBS=-Llib/
 
 prueba: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o Lista_Buscar.o liblista.so 
-	gcc $(LIBS) obj/* -o bin/$@
+	gcc $(LIBS) obj/* -o $@
 
 liblista.so: pruebaLista.o ListaAnterior.o Lista_InsertarFin.o Lista_Ultimo.o Lista_InsertarInicio.o Lista_Conteo.o Lista_vacia.o Lista_Primero.o listainicializar.o Lista_Sacar.o Lista_InsertarAntes.o Lista_SacarTodos.o Lista_InsertarDespues.o Lista_Siguiente.o Lista_Buscar.o
 	gcc -shared  obj/* -o lib/liblista.so
@@ -55,7 +55,8 @@ Lista_Siguiente.o: src/Lista_Siguiente.c
 
 .PHONY: clean
 clean:
-	rm -rf obj/* bin/* lib/*
+	rm -rf obj/* lib/*
+	rm ./prueba
 
 
       
