@@ -3,7 +3,11 @@
 ElementoLista *Lista_Buscar(ListaEnlazada *lista, void *objeto){
 	if (  (lista!=NULL) && (lista->numeroElementos!=0) ){
 		ElementoLista *elemento = Lista_Primero(lista);
-		while(elemento -> objeto != NULL){
+		ElementoLista ancla = lista -> ancla;
+		
+
+		while(elemento != &ancla){
+			
 			if(elemento -> objeto == objeto){
 				return elemento;
 			}
@@ -11,5 +15,6 @@ ElementoLista *Lista_Buscar(ListaEnlazada *lista, void *objeto){
 		}
 		
 	}
+	
 	return NULL;
 }

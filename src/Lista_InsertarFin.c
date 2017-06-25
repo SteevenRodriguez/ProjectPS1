@@ -6,42 +6,38 @@
 
 int Lista_InsertarFin(ListaEnlazada *lista, void *objeto)
 {
-  if (lista != NULL)
-  {
+	if (lista != NULL){
 
-    int numeroElementos = Lista_Conteo(lista);
-    ElementoLista *nuevo = (ElementoLista *)malloc(sizeof(ElementoLista));
-    
-    
-    if (nuevo==NULL)
-      return -1;
+		int numeroElementos = Lista_Conteo(lista);
+		ElementoLista *nuevo = (ElementoLista *)malloc(sizeof(ElementoLista));
 
-    nuevo->objeto = objeto;
 
-    if (numeroElementos == 0)
-    {
-      nuevo->siguiente = &(lista->ancla);
-      nuevo->anterior = &(lista->ancla);
-      
-      lista->ancla.siguiente = nuevo;
-      lista->ancla.anterior = nuevo;
+		if (nuevo==NULL)
+			return -1;
 
-    }else
-    {
-      ElementoLista *ultimo = Lista_Ultimo(lista);
+		nuevo->objeto = objeto;
 
-      
-      nuevo->siguiente = &(lista->ancla);
-      nuevo->anterior = ultimo;
-       
-      ultimo->siguiente = nuevo;
-      lista->ancla.anterior = nuevo;
-    }
+		if (numeroElementos == 0){
+			nuevo->siguiente = &(lista->ancla);
+			nuevo->anterior = &(lista->ancla);
 
-    lista->numeroElementos += 1;
-    return 0;
+			lista->ancla.siguiente = nuevo;
+			lista->ancla.anterior = nuevo;
 
-  }
-  else
-    return -1;
+		}else{
+			ElementoLista *ultimo = Lista_Ultimo(lista);
+
+
+			nuevo->siguiente = &(lista->ancla);
+			nuevo->anterior = ultimo;
+
+			ultimo->siguiente = nuevo;
+			lista->ancla.anterior = nuevo;
+		}
+
+		lista->numeroElementos += 1;
+		return 0;
+
+	}
+	return -1;
 }

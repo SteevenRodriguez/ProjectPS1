@@ -12,33 +12,37 @@ void Lista_Sacar(ListaEnlazada *lista, ElementoLista *elemento){
 		ElementoLista *primero = Lista_Primero(lista);
 		ElementoLista *ultimo = Lista_Ultimo(lista);
 		if(numeroElementos==1){
-		//if ( (long)primero->objeto == (long)elemento->objeto )
+			//if ( (long)primero->objeto == (long)elemento->objeto )
 			if ( primero == elemento ){  
-			ancla->siguiente = ancla;
-			ancla->anterior = ancla;
+				ancla->siguiente = ancla;
+				ancla->anterior = ancla;
 
-			lista->numeroElementos = 0;
+				lista->numeroElementos = 0;
+				return;
 			}
 		}
 		ElementoLista *next = Lista_Siguiente(lista,elemento);
 		ElementoLista *before = Lista_Anterior(lista,elemento);
 
-		
+
 		if (primero == elemento){
-			next->anterior = &(lista -> ancla);
-			before->siguiente = next;
+			next->anterior = ancla;
+			lista->ancla.siguiente = next;
 			lista->numeroElementos -= 1;
+			return;
 		}
 		else if (ultimo == elemento){
-			next->anterior = before;
-			before->siguiente = &(lista -> ancla);
+			lista->ancla.anterior = before;
+			before->siguiente = ancla;
 			lista->numeroElementos -= 1;
+			return;
 		}
 
 		else{
 			next->anterior = before;
 			before->siguiente = next;
 			lista->numeroElementos -= 1;
+			return;
 		}
 	}
 }
