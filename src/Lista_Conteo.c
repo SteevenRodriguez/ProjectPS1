@@ -3,7 +3,8 @@
 #include "miLista.h"
 
 int Lista_Conteo(ListaEnlazada *lista){
-	if(lista == NULL){
+/*Revision de las condiciones necesarias*/	
+if(lista == NULL){
 		return -1;
 	}
 	else{

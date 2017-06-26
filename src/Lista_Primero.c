@@ -5,14 +5,12 @@
 ElementoLista *Lista_Primero(ListaEnlazada *lista);
 
 ElementoLista *Lista_Primero(ListaEnlazada *lista){
-	if (lista != NULL)
-	{
-		int numeroElementos = Lista_Conteo(lista);
-		if (numeroElementos > 0)
-			{
-			//ElementoLista ultimo = (lista->ancla).anterior; 
-			
-			return lista -> ancla.siguiente;
+/*Revision de las condiciones necesarias*/	
+if (lista != NULL){
+	int numeroElementos = Lista_Conteo(lista);
+/*Si la lista no esta vacia se obtiene el primero que es siguiente al ancla*/
+	if (numeroElementos > 0){
+		return lista -> ancla.siguiente;
 			}
 	}
 	return NULL;

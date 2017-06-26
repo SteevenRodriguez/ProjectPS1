@@ -5,7 +5,7 @@
 #include <assert.h>     /* assert */
 #include "miLista.h"
 
-#define IMPRIMIR_LISTA
+//#define IMPRIMIR_LISTA
 
 
 
@@ -92,7 +92,6 @@ int BarajarLista(ListaEnlazada *lista, int numeroElementos)
 
 		if (elem == NULL){
 			/*No encontramos el valor (o Buscar esta mal implementada)*/
-
 			fprintf(stderr, "BarajarLista: Error critico en BarajarLista (linea %d)\n", __LINE__);
 			exit(-1);
 		}

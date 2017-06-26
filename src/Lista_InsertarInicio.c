@@ -5,30 +5,29 @@
 
 int Lista_InsertarInicio(ListaEnlazada *lista, void *objeto);
 
-int Lista_InsertarInicio(ListaEnlazada *lista, void *objeto)
-{
-  if (lista != NULL)
-  {
-
+int Lista_InsertarInicio(ListaEnlazada *lista, void *objeto){
+/*Revision de las condiciones necesarias*/
+  if (lista != NULL){
+/*Crea una variable con el numero de elementos en la lista*/
 	int numeroElementos = Lista_Conteo(lista);
 	ElementoLista *nuevo = (ElementoLista *)malloc(sizeof(ElementoLista));
 
 	if( nuevo == NULL )
 		return -1;
-
+/*Se asigna el objeto al puntero*/
 	nuevo->objeto = objeto;
 
-
-	if (numeroElementos == 0)
-    {
+/*Revision de las condiciones necesarias*/
+	if (numeroElementos == 0) {
+/*Nuevo se asigna con el ancla*/
       nuevo->siguiente = &(lista->ancla);
       nuevo->anterior = &(lista->ancla);
       
       lista->ancla.siguiente = nuevo;
       lista->ancla.anterior = nuevo;
 
-    }else
-    {
+    }else{
+/*Se realizan las referencias*/
       ElementoLista *primero = Lista_Primero(lista);
 
       nuevo->siguiente = primero;

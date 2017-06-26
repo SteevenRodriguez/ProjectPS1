@@ -4,32 +4,30 @@
 
 #include "miLista.h"
 
-void Lista_SacarTodos(ListaEnlazada *lista)
-{
-
-  if ( (lista!=NULL) && (lista->numeroElementos!=0) )
-  {
+void Lista_SacarTodos(ListaEnlazada *lista){
+/*Revision de las condiciones necesarias*/
+  if ( (lista!=NULL) && (lista->numeroElementos!=0) ){
     int numeroElementos = Lista_Conteo(lista);
+/*Se crea dos punteros uno al ancla y otro al primer elemento de la lista*/
     ElementoLista *ancla = &(lista->ancla);
     ElementoLista *head = Lista_Primero(lista);
-
-    if(numeroElementos==1)
-    {
+	/*Si solo existe un elemento*/
+    if(numeroElementos==1){
+/*El ancla apunte a si mismo*/
          ancla->siguiente = ancla;
          ancla->anterior = ancla;
     }
-
-    if(numeroElementos>1)
-    {
+/*Si existen mas de un elemento*/
+    if(numeroElementos>1){
+/*Se crea un puntero*/
       ElementoLista *before = (ElementoLista *)malloc(sizeof(ElementoLista));
       
-      
-      while (head!= ancla)
-      {
-        
+      /*Se recorre la lista*/
+      while (head!= ancla){
+        /*Puntero before se colocara antes de la cabecera*/
         before = head->anterior;
-        if(before != ancla)  
-        {
+        if(before != ancla)  {
+/*Nos brinda facilidad mientras no sea el ancla se referencia todos los atributos a null*/
           before->siguiente = NULL;
           before->anterior = NULL;
           before->objeto = NULL;
@@ -41,7 +39,7 @@ void Lista_SacarTodos(ListaEnlazada *lista)
       }
 
     }
-    
+    /*Se actualiza el numero de elementos en la lista*/
     lista->numeroElementos = 0;
   }
   

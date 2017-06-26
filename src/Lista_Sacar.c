@@ -3,16 +3,16 @@
 #include "miLista.h"
 
 void Lista_Sacar(ListaEnlazada *lista, ElementoLista *elemento){
-	//Condiciones para entrar al algoritmo
+	/*Revision de las condiciones necesarias*/
 	if ( (lista!=NULL) && (elemento!=NULL) && (lista->numeroElementos!=0) ){
-		//Se obtiene el tamaño de la lista
-		int numeroElementos = Lista_Conteo(lista);
-		//Se crean dos punteros hacia ancla y primero para facilitar la busqueda
+/*Se crea una variable con el numero de elementos*/
+		int numero = Lista_Conteo(lista);
+/*Se crean dos punteros en los extremos de la lista para resolver con mayor rapidez*/
 		ElementoLista *ancla = &(lista->ancla);
 		ElementoLista *primero = Lista_Primero(lista);
 		ElementoLista *ultimo = Lista_Ultimo(lista);
-		if(numeroElementos==1){
-			//if ( (long)primero->objeto == (long)elemento->objeto )
+		if(numero==1){
+			/*Revision de las condiciones necesarias*/
 			if ( primero == elemento ){  
 				ancla->siguiente = ancla;
 				ancla->anterior = ancla;
@@ -21,17 +21,21 @@ void Lista_Sacar(ListaEnlazada *lista, ElementoLista *elemento){
 				return;
 			}
 		}
+/*Si no se encuentra en los extremos entonces necesitamos a los extremos del elemento para hacer las referencias*/
 		ElementoLista *next = Lista_Siguiente(lista,elemento);
 		ElementoLista *before = Lista_Anterior(lista,elemento);
 
-
+/*Se revisa si es el primero*/
 		if (primero == elemento){
+/*Se asignan las referencias con el ancla*/
 			next->anterior = ancla;
 			lista->ancla.siguiente = next;
 			lista->numeroElementos -= 1;
 			return;
 		}
+/*Se revisa si es el ultimo en que hay que sacar*/
 		else if (ultimo == elemento){
+/*Se asignan las referencias con el ancla*/
 			lista->ancla.anterior = before;
 			before->siguiente = ancla;
 			lista->numeroElementos -= 1;
@@ -39,6 +43,7 @@ void Lista_Sacar(ListaEnlazada *lista, ElementoLista *elemento){
 		}
 
 		else{
+/*Se asignan referencias con los punteros extremos del elemento*/
 			next->anterior = before;
 			before->siguiente = next;
 			lista->numeroElementos -= 1;
